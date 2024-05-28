@@ -1,0 +1,54 @@
+body{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content:center ;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+main{    
+    width: 90%;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+section{   
+    width: 50%;    
+}
+
+form{
+    display: flex;
+    justify-content: center;    
+}
+
+form div{    
+    width: 80%;
+}
+h2{
+    font-size: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+label, button, input{
+    margin: 0.5rem;
+    
+}
+
+input{
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border: none;
+    width: 15rem;
+}
+
+button{
+    padding: 0.5rem;
+    background-color: black;
+    border-radius: 0.2rem;    
+    border-color: white;
+    color: white;
+}

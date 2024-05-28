@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+    <main>
+        <section>
+            <div>
+                <h2>Black and white Spa</h2>
+            </div>
+            <form action="/imagen-procesada" method="POST">
+                <div>
+                    <label for="urlImagen">Imagen URL:</label>
+                    <div><input id="urlImagen" type="text" name="urlImagen" placeholder="URL de la imagen" required></div>
+                    <button type="submit">Subir imagen al servidor</button>
+                </div>
+            </form>
+            <div id="imagenProcesadaContainer"></div>
+        </section>
+    </main>
+    <script>
+        document.getElementById('formImagen').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar el envío del formulario
+
+            const urlImagen = document.getElementById('urlImagen').value;
+
+            fetch('/imagen-procesada', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `urlImagen=${encodeURIComponent(urlImagen)}`,
+            })
+            .then(response => response.text())
+            .then(rutaImagen => {
+                // Crear un elemento <img> y establecer su atributo src con la ruta de la imagen procesada
+                const img = document.createElement('img');
+                img.src = rutaImagen;
+
+                // Limpiar el contenedor antes de agregar la imagen
+                const container = document.getElementById('imagenProcesadaContainer');
+                container.innerHTML = '';
+
+                // Agregar la imagen al contenedor en el HTML
+                container.appendChild(img);
+            })
+            .catch(error => console.error('Error al cargar la imagen:', error));
+        });
+    </script>
+
+</body>
+
+</html>
